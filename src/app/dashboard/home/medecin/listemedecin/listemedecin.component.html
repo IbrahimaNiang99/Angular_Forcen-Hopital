@@ -1,0 +1,74 @@
+<ul class="breadcrumb">
+  <li class="breadcrumb-item"><a [routerLink]="['medecin/liste']"><i class="fa fa-user-md"></i></a></li>
+  <li class="breadcrumb-item"><a [routerLink]="['medecin/liste']">liste des médecins</a></li>
+</ul>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-header">
+        <h5>Liste des médecins</h5>
+      </div>
+      <div class="card-body">
+        <div class="card-body table-border-style">
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+              <tr>
+                <th >#</th>
+                <th>Prenom</th>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Nationalite</th>
+                <th>Age</th>
+                <th>Date de naissance</th>
+                <th>Lieu de naissance</th>
+                <th>Tel Travail</th>
+                <th>Tel Domicile</th>
+                <th>Services</th>
+                <th>Specialites</th>
+                <th>Actions</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let mdc of listeMedecin ">
+                <td>{{mdc.idMedecin }}</td>
+                <td>{{mdc.prenom}}</td>
+                <td>{{mdc.nom}}</td>
+                <td>{{mdc.email}}</td>
+                <td>{{mdc.nationalite}}</td>
+                <td>{{mdc.age}}</td>
+                <td>{{mdc.dateDeNaissance | date:("dd/MM/yyyy")}}</td>
+                <td>{{mdc.lieuDeNaissance}}</td>
+                <td>{{mdc.telPersonnel}}</td>
+                <td>{{mdc.telTravail}}</td>
+                <td>
+                  <p *ngFor="let serv of mdc.services">
+                    {{serv.nomService}}
+                  </p>
+                </td>
+                <td>
+                  <p *ngFor="let spc of mdc.specialites">
+                    {{spc.nomSpecialite}}
+                  </p>
+                </td>
+                <td>
+                  <a class="btn-sm btn-warning text-white">
+                    <i class="fa fa-edit"></i>
+                  </a>
+                  <a class="btn-sm btn-danger ml-2 text-white">
+                    <i class="fa fa-trash"></i>
+                  </a>
+                </td>
+              </tr>
+
+
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,234 @@
+<div class="" *ngIf="consultation">
+  <ul class="breadcrumb">
+    <li class="breadcrumb-item"><a [routerLink]="['/home/consultation/liste']"><i class="fa fa-hospital"></i></a></li>
+    <li class="breadcrumb-item"><a [routerLink]="['/home/consultation/liste']">Détails consultation</a></li>
+  </ul>
+</div>
+
+
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-header">
+        <h5>Détails consultation n° {{consultation.idConsultation}} du {{ consultation.dateConsultation | date:("dd/MM/yyyy")  }}</h5>
+        <br><br>
+        <h6>Synthèse :</h6>
+        <br>
+        <p>
+          {{consultation.synthese}}
+        </p>
+      </div>
+      <div class="card-body">
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Patient</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Medecin</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Rendez-Vous</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="pills-type-cons" data-toggle="pill" href="#pills-type-consultation" role="tab" aria-controls="pills-contact" aria-selected="false">Type de consultation</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="pills-presciption" data-toggle="pill" href="#pills-prescrit" role="tab" aria-controls="pills-contact" aria-selected="false">Prescription</a>
+          </li>
+        </ul>
+        <div class="tab-content" id="pills-tabContent">
+          <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+              <div class="card">
+                <div class="card-header">
+                  <span class="d-block m-t-5">Liste des informations concernant le <code>patient</code> </span>
+                </div>
+                <div class="card-body table-border-style">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                      <tr>
+                        <th>N°</th>
+                        <th>Prénom & Nom</th>
+                        <th>Adresse</th>
+                        <th>Téléphone</th>
+                        <th>Sexe</th>
+                        <th>Situation mat.</th>
+
+                        <th>Age</th>
+                        <th>Date Naissance</th>
+                        <th>Provenance</th>
+
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr>
+                        <td>{{ consultation.rendezVouses.patient.idPatient }}</td>
+                        <td>{{consultation.rendezVouses.patient.prenom +" "+ consultation.rendezVouses.patient.nom}}</td>
+                        <td>{{consultation.rendezVouses.patient.adresse}}</td>
+                        <td>{{consultation.rendezVouses.patient.telephone}}</td>
+                        <td>{{consultation.rendezVouses.patient.sexe}}</td>
+                        <td>{{consultation.rendezVouses.patient.situationMatrimaniale}}</td>
+                        <td>{{consultation.rendezVouses.patient.age}}</td>
+                        <td>{{consultation.rendezVouses.patient.dateNaissance | date:("dd/MM/yyyy") }}</td>
+                        <td>{{consultation.rendezVouses.patient.provenance.lieuDeProvenance}}</td>
+
+                        <!--td> Fils de {{consultation.rendezVouses.patient.prenomPere+" "+consultation.rendezVouses.patient.nomPere}} et de {{consultation.rendezVouses.patient.prenomMere+" "+consultation.rendezVouses.patient.nomMere}}</td-->
+
+                      </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="card-body table-border-style">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                      <tr>
+                        <th>Personne à prevenir</th>
+                        <th>tel personne à prevenir</th>
+                        <th>Père</th>
+                        <th>Mère</th>
+
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr>
+                        <td>{{consultation.rendezVouses.patient.nomPersonneAPrevenir}}</td>
+                        <td>{{consultation.rendezVouses.patient.telPersonneAPrevenir}}</td>
+                        <td>{{consultation.rendezVouses.patient.prenomPere+" "+consultation.rendezVouses.patient.nomPere}} </td>
+                        <td>{{consultation.rendezVouses.patient.prenomMere+" "+consultation.rendezVouses.patient.nomMere}}</td>
+
+
+                      </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+            <div class="card">
+              <div class="card-header">
+                <span class="d-block m-t-5">Liste des informations concernant le <code>médecin</code> </span>
+              </div>
+              <div class="card-body table-border-style">
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead>
+                    <tr>
+                      <th>N°</th>
+                      <th>Prénom & Nom</th>
+                      <th>Email</th>
+                      <th>Nationnalité</th>
+                      <th>Sexe</th>
+                      <th>Age</th>
+                      <th>Date Naiss</th>
+                      <th>Lieu Naiss</th>
+                      <th>Tél travail</th>
+                      <th>Tél domicile</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                      <td>{{consultation.medecin.idMedecin }}</td>
+                      <td>{{consultation.medecin.prenom +" "+ consultation.medecin.nom}}</td>
+                      <td>{{consultation.medecin.email}}</td>
+                      <td>{{consultation.medecin.nationalite}}</td>
+                      <td>{{consultation.medecin.sexe}}</td>
+                      <td>{{consultation.medecin.age}}</td>
+                      <td>{{consultation.medecin.dateDeNaissance | date:("dd/MM/yyyy") }}</td>
+                      <td>{{consultation.medecin.lieuDeNaissance}}</td>
+                      <td>{{consultation.medecin.telTravail}}</td>
+                      <td>{{consultation.medecin.telPersonnel}}</td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+            <div class="card">
+              <div class="card-header">
+                <span class="d-block m-t-5">Liste des informations concernant le <code> rendez-vous </code> </span>
+              </div>
+              <div class="card-body table-border-style">
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead>
+                    <tr>
+                      <th>Code RV</th>
+                      <th>Date RV</th>
+                      <th>Service</th>
+                      <th>Médecin</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                      <td>{{consultation.rendezVouses.codeRDV }}</td>
+                      <td>{{consultation.rendezVouses.dateRDV | date:("dd/MM/yyyy")}}</td>
+                      <td>{{consultation.rendezVouses.service}}</td>
+                      <td>{{consultation.rendezVouses.medecin}}</td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="pills-type-consultation" role="tabpanel" aria-labelledby="pills-contact-tab">
+            <div class="card">
+              <div class="card-header">
+                <span class="d-block m-t-5">Liste des informations concernant le <code> type de consultation </code> </span>
+              </div>
+              <div class="card-body table-border-style">
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead>
+                    <tr>
+                      <th>N°</th>
+                      <th>Type de consultation</th>
+                      <th>Prix de la consultation</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                      <td>{{consultation.typeConsultation.idTypeConsultation }}</td>
+                      <td>{{consultation.typeConsultation.typeConsultation}}</td>
+                      <td>{{consultation.typeConsultation.prixConsultation}}</td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="pills-prescrit" role="tabpanel" aria-labelledby="pills-contact-tab">
+            <div class="card-body table-border-style">
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                  <tr>
+                    <th>N°</th>
+                    <th>Patient</th>
+                    <th>Date prescription</th>
+                    <th>Note</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    <td>{{consultation.prescription.idPrescription}}</td>
+                    <td>{{consultation.prescription.prenomPatient+" "+consultation.prescription.nomPatient }}</td>
+                    <td>{{consultation.prescription.datePrescription | date:("dd/MM/yyyy")}}</td>
+                    <td>{{consultation.prescription.note}}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

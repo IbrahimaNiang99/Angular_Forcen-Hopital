@@ -1,0 +1,101 @@
+
+
+<nav class="pcoded-navbar">
+  <div class="navbar-wrapper  ">
+    <div class="navbar-content scroll-div " >
+
+      <div class="">
+        <div class="main-menu-header">
+          <img class="img-radius" src="assets/template-flat/assets/images/user/avatar-2.jpg" alt="User-Profile-Image">
+          <div class="user-details">
+            <span>John Doe</span>
+          </div>
+        </div>
+        <div class="collapse" id="nav-user-link">
+          <ul class="list-unstyled">
+            <li class="list-group-item"><a href="user-profile.html"><i class="feather icon-user m-r-5"></i>View Profile</a></li>
+            <li class="list-group-item"><a href="#!"><i class="feather icon-settings m-r-5"></i>Settings</a></li>
+            <li class="list-group-item"><a href="auth-normal-sign-in.html"><i class="feather icon-log-out m-r-5"></i>Logout</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <ul class="nav pcoded-inner-navbar ">
+
+        <li class="nav-item pcoded-menu-caption">
+          <label>Navigation</label>
+        </li>
+
+        <li class="nav-item">
+          <a [routerLink]="['accueil']" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home">
+              </i></span><span class="pcoded-mtext">Accueil</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a [routerLink]="['consultation/liste']" class="nav-link "><span class="pcoded-micon"><i class="fa fa-hospital">
+              </i></span><span class="pcoded-mtext">Consultation</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a [routerLink]="['hospitalisation/liste']" class="nav-link "><span class="pcoded-micon"><i class="fa fa-medkit">
+              </i></span><span class="pcoded-mtext">Hospitalisation</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a [routerLink]="['patient/liste']" class="nav-link "><span class="pcoded-micon"><i class="fa fa-user-injured">
+              </i></span><span class="pcoded-mtext">Patient</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a [routerLink]="['rendezvous/liste']" class="nav-link "><span class="pcoded-micon"><i class="fa fa-file-medical-alt">
+              </i></span><span class="pcoded-mtext">Rendez-vous</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a [routerLink]="['medecin/liste']" class="nav-link "><span class="pcoded-micon"><i class="fa fa-user-md">
+              </i></span><span class="pcoded-mtext">Medecin</span>
+          </a>
+        </li>
+
+        <li class="nav-item pcoded-hasmenu">
+          <a  class="nav-link "><span class="pcoded-micon"><i class="feather icon-layout"></i></span><span class="pcoded-mtext">Page layouts</span></a>
+          <ul class="pcoded-submenu">
+            <li><a href="layout-vertical.html" target="_blank">Vertical</a></li>
+            <li><a href="layout-horizontal.html" target="_blank">Horizontal</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<app-head></app-head>
+
+
+<div class="pcoded-main-container">
+  <div class="pcoded-content">
+
+    <div class="page-header">
+      <div class="page-block">
+        <div class="row align-items-center">
+          <div class="col-md-12">
+            <div class="page-header-title">
+              <h5 class="m-b-10">Hopital</h5>
+            </div>
+            <ul class="breadcrumb">
+              <router-outlet></router-outlet>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+</div>

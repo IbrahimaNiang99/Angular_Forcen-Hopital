@@ -1,0 +1,65 @@
+<ul class="breadcrumb">
+  <li class="breadcrumb-item"><a [routerLink]="['consultation/liste']"><i class="fa fa-hospital"></i></a></li>
+  <li class="breadcrumb-item"><a [routerLink]="['consultation/liste']">liste consultations</a></li>
+</ul>
+
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-header">
+        <h5>Liste des consultations</h5>
+      </div>
+      <div class="card-body">
+            <div class="card-body table-border-style">
+              <div class="table-responsive">
+                <table class="table table-striped">
+                  <thead>
+                  <tr>
+                    <th >#</th>
+                    <th>Details</th>
+                    <th>Date de consultation</th>
+                    <th>Synthèse</th>
+                    <th>Type de consultation </th>
+                    <th>Medecin</th>
+                    <th>Rendez-vous</th>
+                    <th>Patient</th>
+                    <th>Actions</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let cons of listeConsultation">
+                      <td >{{ cons.idConsultation }}</td>
+                      <td>
+                        <a (click)="details(cons.idConsultation)">
+                          <span class="badge badge-pill badge-info"> Infos
+                            <i class="fa fa-eye"></i>
+                          </span>
+                        </a>
+                      </td>
+                      <td>{{cons.dateConsultation | date:("dd/MM/yyyy") }}</td>
+                      <td>{{cons.synthese}}</td>
+                      <td>{{cons.typeConsultation.typeConsultation }}</td>
+                      <td>{{cons.medecin.prenom +" "+cons.medecin.nom}}</td>
+                      <td>{{cons.rendezVouses.dateRDV | date:("dd/MM/yyyy") }}</td>
+                      <td>{{cons.patient.prenom +" "+cons.patient.nom }}</td>
+                      <td>
+                        <a class="btn-sm btn-warning text-white">
+                          <i class="fa fa-edit"></i>
+                        </a>
+                        <a class="btn-sm btn-danger ml-2 text-white">
+                          <i class="fa fa-trash"></i>
+                        </a>
+                      </td>
+                  </tr>
+
+
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+      </div>
+    </div>
+  </div>
+</div>

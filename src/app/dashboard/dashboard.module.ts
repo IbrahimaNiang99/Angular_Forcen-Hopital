@@ -18,6 +18,8 @@ import {ListemedecinComponent} from "./home/medecin/listemedecin/listemedecin.co
 import { ListehospitalisationComponent } from './home/hospitalisation/listehospitalisation/listehospitalisation.component';
 import { ListerendezvousComponent } from './home/rendezvous/listerendezvous/listerendezvous.component';
 import { DetailsconsultationComponent } from './home/consultation/detailsconsultation/detailsconsultation.component';
+import { DetailshospitalisationComponent } from './home/hospitalisation/detailshospitalisation/detailshospitalisation.component';
+import { DossierComponent } from './home/patient/dossier/dossier.component';
 
 const routes: Routes = [
   { path: "home", component: HomeComponent,
@@ -27,6 +29,8 @@ const routes: Routes = [
       {path: "consultation/liste", component: ListeconsultationComponent},
       {path: "consultation/details/:id", component: DetailsconsultationComponent},
       {path: "hospitalisation/liste", component: ListehospitalisationComponent},
+      {path: "hospitalisation/details/:id", component: DetailshospitalisationComponent},
+      {path: "patient/dossier/:id", component: DossierComponent},
       {path: "medecin/liste", component: ListemedecinComponent},
       {path: "patient/liste", component: ListepatientComponent},
       {path: "rendezvous/liste", component: ListerendezvousComponent},
@@ -52,7 +56,9 @@ const routes: Routes = [
     ListeconsultationComponent,
     ListehospitalisationComponent,
     ListerendezvousComponent,
-    DetailsconsultationComponent
+    DetailsconsultationComponent,
+    DetailshospitalisationComponent,
+    DossierComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,123 @@
+<div>
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a [routerLink]="['/home/hospitalisation/liste']"><i class="fa fa-hospital"></i></a></li>
+        <li class="breadcrumb-item"><a [routerLink]="['/home/hospitalisation/liste']">Détails hospitalisation</a></li>
+    </ul>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="card">
+            <div class="card-header">
+                <span class="d-block m-t-5">Liste des informations concernant <code>l'hospitalisation</code> </span>
+            </div>
+            <div class="card-body table-border-style">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Type admission</th>
+                            <th>Motif admission</th>
+                            <th>Medecin traitant</th>
+                            <th>Accompagnant</th>
+                            <th>Lien parental</th>
+                            <th>entrée</th>
+                            <th>sortie</th>
+                            <th>Motif sortie</th>
+                            <th>Rés sortie</th>
+                            <th>Date sortie</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>{{hospitalisation.dateAdmission | date:("dd/MM/yyyy")}}</td>
+                            <td>{{hospitalisation.typeAdmission}}</td>
+                            <td>{{hospitalisation.motifAdmission}}</td>
+                            <td>{{hospitalisation.medecinTraitant}}</td>
+                            <td>{{hospitalisation.accompagnant}}</td>
+                            <td>{{hospitalisation.lienParental}}</td>
+                            <td>{{hospitalisation.dateEntree| date:("dd/MM/yyyy")}}</td>
+                            <td>{{hospitalisation.dateSortie | date:("dd/MM/yyyy")}}</td>
+                            <td>{{hospitalisation.motifSortie}}</td>
+                            <td>{{hospitalisation.motifSortie}}</td>
+                            <td>{{hospitalisation.dateSortie | date:("dd/MM/yyyy")}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <span class="d-block m-t-5">Liste des informations concernant le <code>patient</code> </span>
+            </div>
+            <div class="card-body table-border-style">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>N°</th>
+                            <th>Prénom & Nom</th>
+                            <th>Adresse</th>
+                            <th>Téléphone</th>
+                            <th>Sexe</th>
+                            <th>Situation mat.</th>
+                            <th>Age</th>
+                            <th>Date Naissance</th>
+                            <th>Provenance</th>
+                            <th>Pere</th>
+                            <th>Mere</th>
+                            <th>A prevenir</th>
+                            <th>Tel pers. A prevenir</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>{{ hospitalisation.patient?.idPatient }}</td>
+                            <td>{{hospitalisation.patient?.prenom +" "+ hospitalisation.patient?.nom}}</td>
+                            <td>{{hospitalisation.patient?.adresse}}</td>
+                            <td>{{hospitalisation.patient?.telephone}}</td>
+                            <td>{{hospitalisation.patient?.sexe}}</td>
+                            <td>{{hospitalisation.patient?.situationMatrimaniale}}</td>
+                            <td>{{hospitalisation.patient?.age}}</td>
+                            <td>{{hospitalisation.patient?.dateNaissance | date:("dd/MM/yyyy") }}</td>
+                            <td>{{hospitalisation.patient?.provenance?.lieuDeProvenance}}</td>
+                            <td>{{hospitalisation.patient?.prenomPere +" "+hospitalisation.patient?.nomPere}}</td>
+                            <td>{{hospitalisation.patient?.prenomMere +" "+hospitalisation.patient?.nomMere}}</td>
+                            <td>{{hospitalisation.patient?.nomPersonneAPrevenir}}</td>
+                            <td>{{hospitalisation.patient?.telPersonneAPrevenir}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="card" *ngIf="hospitalisation.dateDeces">
+            <div class="card-header">
+                <span class="d-block m-t-5">Liste des informations concernant le <code>décès</code> </span>
+            </div>
+            <div class="card-body table-border-style">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Date décès</th>
+                                <th>Motif décès</th>
+                                <th>Date sortie</th>
+                            </tr>
+                        </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{{hospitalisation.dateDeces | date:("dd/MM/yyyy")}}</td>
+                                    <td>{{hospitalisation.motifDeces}}</td>
+                                    <td>{{hospitalisation.dateSortie | date:("dd/MM/yyyy")}}</td>
+                                </tr>
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

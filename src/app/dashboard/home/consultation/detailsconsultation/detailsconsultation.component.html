@@ -1,4 +1,4 @@
-<div class="" *ngIf="consultation">
+<div>
   <ul class="breadcrumb">
     <li class="breadcrumb-item"><a [routerLink]="['/home/consultation/liste']"><i class="fa fa-hospital"></i></a></li>
     <li class="breadcrumb-item"><a [routerLink]="['/home/consultation/liste']">Détails consultation</a></li>
@@ -10,7 +10,7 @@
   <div class="col-sm-12">
     <div class="card">
       <div class="card-header">
-        <h5>Détails consultation n° {{consultation.idConsultation}} du {{ consultation.dateConsultation | date:("dd/MM/yyyy")  }}</h5>
+        <h5>Détails consultation n° {{consultation.idConsultation}}  du {{ consultation.dateConsultation | date:("dd/MM/yyyy")  }}</h5>
         <br><br>
         <h6>Synthèse :</h6>
         <br>
@@ -62,15 +62,15 @@
                       </thead>
                       <tbody>
                       <tr>
-                        <td>{{ consultation.rendezVouses.patient.idPatient }}</td>
-                        <td>{{consultation.rendezVouses.patient.prenom +" "+ consultation.rendezVouses.patient.nom}}</td>
-                        <td>{{consultation.rendezVouses.patient.adresse}}</td>
-                        <td>{{consultation.rendezVouses.patient.telephone}}</td>
-                        <td>{{consultation.rendezVouses.patient.sexe}}</td>
-                        <td>{{consultation.rendezVouses.patient.situationMatrimaniale}}</td>
-                        <td>{{consultation.rendezVouses.patient.age}}</td>
-                        <td>{{consultation.rendezVouses.patient.dateNaissance | date:("dd/MM/yyyy") }}</td>
-                        <td>{{consultation.rendezVouses.patient.provenance.lieuDeProvenance}}</td>
+                        <td>{{ consultation.patient?.idPatient }}</td>
+                        <td>{{consultation.patient?.prenom +" "+ consultation.patient?.nom}}</td>
+                        <td>{{consultation.patient?.adresse}}</td>
+                        <td>{{consultation.patient?.telephone}}</td>
+                        <td>{{consultation.patient?.sexe}}</td>
+                        <td>{{consultation.patient?.situationMatrimaniale}}</td>
+                        <td>{{consultation.patient?.age}}</td>
+                        <td>{{consultation.patient?.dateNaissance | date:("dd/MM/yyyy") }}</td>
+                        <td>{{consultation.patient?.provenance?.lieuDeProvenance}}</td>
 
                         <!--td> Fils de {{consultation.rendezVouses.patient.prenomPere+" "+consultation.rendezVouses.patient.nomPere}} et de {{consultation.rendezVouses.patient.prenomMere+" "+consultation.rendezVouses.patient.nomMere}}</td-->
 
@@ -93,10 +93,10 @@
                       </thead>
                       <tbody>
                       <tr>
-                        <td>{{consultation.rendezVouses.patient.nomPersonneAPrevenir}}</td>
-                        <td>{{consultation.rendezVouses.patient.telPersonneAPrevenir}}</td>
-                        <td>{{consultation.rendezVouses.patient.prenomPere+" "+consultation.rendezVouses.patient.nomPere}} </td>
-                        <td>{{consultation.rendezVouses.patient.prenomMere+" "+consultation.rendezVouses.patient.nomMere}}</td>
+                        <td>{{consultation.patient?.nomPersonneAPrevenir}}</td>
+                        <td>{{consultation.patient?.telPersonneAPrevenir}}</td>
+                        <td>{{consultation.patient?.prenomPere+" "+consultation.patient?.nomPere}} </td>
+                        <td>{{consultation.patient?.prenomMere+" "+consultation.patient?.nomMere}}</td>
 
 
                       </tr>
@@ -130,16 +130,16 @@
                     </thead>
                     <tbody>
                     <tr>
-                      <td>{{consultation.medecin.idMedecin }}</td>
-                      <td>{{consultation.medecin.prenom +" "+ consultation.medecin.nom}}</td>
-                      <td>{{consultation.medecin.email}}</td>
-                      <td>{{consultation.medecin.nationalite}}</td>
-                      <td>{{consultation.medecin.sexe}}</td>
-                      <td>{{consultation.medecin.age}}</td>
-                      <td>{{consultation.medecin.dateDeNaissance | date:("dd/MM/yyyy") }}</td>
-                      <td>{{consultation.medecin.lieuDeNaissance}}</td>
-                      <td>{{consultation.medecin.telTravail}}</td>
-                      <td>{{consultation.medecin.telPersonnel}}</td>
+                      <td>{{consultation.medecin?.idMedecin }}</td>
+                      <td>{{consultation.medecin?.prenom +" "+ consultation.medecin?.nom}}</td>
+                      <td>{{consultation.medecin?.email}}</td>
+                      <td>{{consultation.medecin?.nationalite}}</td>
+                      <td>{{consultation.medecin?.sexe}}</td>
+                      <td>{{consultation.medecin?.age}}</td>
+                      <td>{{consultation.medecin?.dateDeNaissance | date:("dd/MM/yyyy") }}</td>
+                      <td>{{consultation.medecin?.lieuDeNaissance}}</td>
+                      <td>{{consultation.medecin?.telTravail}}</td>
+                      <td>{{consultation.medecin?.telPersonnel}}</td>
                     </tr>
                     </tbody>
                   </table>
@@ -165,10 +165,10 @@
                     </thead>
                     <tbody>
                     <tr>
-                      <td>{{consultation.rendezVouses.codeRDV }}</td>
-                      <td>{{consultation.rendezVouses.dateRDV | date:("dd/MM/yyyy")}}</td>
-                      <td>{{consultation.rendezVouses.service}}</td>
-                      <td>{{consultation.rendezVouses.medecin}}</td>
+                      <td>{{consultation.rendezVouses?.codeRDV }}</td>
+                      <td>{{consultation.rendezVouses?.dateRDV | date:("dd/MM/yyyy")}}</td>
+                      <td>{{consultation.rendezVouses?.service}}</td>
+                      <td>{{consultation.rendezVouses?.medecin}}</td>
                     </tr>
                     </tbody>
                   </table>
@@ -193,9 +193,9 @@
                     </thead>
                     <tbody>
                     <tr>
-                      <td>{{consultation.typeConsultation.idTypeConsultation }}</td>
-                      <td>{{consultation.typeConsultation.typeConsultation}}</td>
-                      <td>{{consultation.typeConsultation.prixConsultation}}</td>
+                      <td>{{consultation.typeConsultation?.idTypeConsultation }}</td>
+                      <td>{{consultation.typeConsultation?.typeConsultation}}</td>
+                      <td>{{consultation.typeConsultation?.prixConsultation}}</td>
                     </tr>
                     </tbody>
                   </table>
@@ -217,10 +217,10 @@
                   </thead>
                   <tbody>
                   <tr>
-                    <td>{{consultation.prescription.idPrescription}}</td>
-                    <td>{{consultation.prescription.prenomPatient+" "+consultation.prescription.nomPatient }}</td>
-                    <td>{{consultation.prescription.datePrescription | date:("dd/MM/yyyy")}}</td>
-                    <td>{{consultation.prescription.note}}</td>
+                    <td>{{consultation.prescription?.idPrescription}}</td>
+                    <td>{{consultation.prescription?.prenomPatient+" "+consultation.prescription?.nomPatient }}</td>
+                    <td>{{consultation.prescription?.datePrescription | date:("dd/MM/yyyy")}}</td>
+                    <td>{{consultation.prescription?.note}}</td>
                   </tr>
                   </tbody>
                 </table>

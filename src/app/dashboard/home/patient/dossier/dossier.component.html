@@ -1,0 +1,66 @@
+<ul class="breadcrumb">
+  <li class="breadcrumb-item"><a [routerLink]="['medecin/liste']"><i class="fa fa-user-md"></i></a></li>
+  <li class="breadcrumb-item"><a [routerLink]="['medecin/liste']">liste des médecins</a></li>
+</ul>
+
+<div class="row">
+  <div class="col-md-8">
+    <div class="card">
+      <div class="card-header text-center">
+        <h5 *ngIf="dossierpatient.listHospi">{{dossierpatient.listHospi[0]?.patient.prenom +" "
+        +dossierpatient.listHospi[0]?.patient.nom+", née le "
+        +(dossierpatient.listHospi[0]?.patient.dateNaissance ? (dossierpatient.listHospi[0]?.patient.dateNaissance | date:"dd/MM/yyyy"):"N/A" )+", "
+        +dossierpatient.listHospi[0]?.patient.age +" ans" }}</h5>
+      </div>
+      <div class="card-body">
+        <div class="card-body table-border-style">
+          <div class="table-responsive">
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-header">
+        <h5>Correspondants</h5>
+      </div>
+      <div class="card-body">
+        <div class="card-body table-border-style">
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+              <tr>
+                <th >#</th>
+                <th>Prenom</th>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Nationalite</th>
+                <th>Age</th>
+                <th>Date de naissance</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+
+
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -22,8 +22,8 @@ export class ListeconsultationComponent implements OnInit {
                 console.log(res)})
   }
 
-  details(id: number){
-    return this.router.navigate(["/home/consultation/details/",id]);
+  detailsConsultation(id: number){
+    return this.router.navigate(["/home/consultation/details/", id]);
   }
 
 }

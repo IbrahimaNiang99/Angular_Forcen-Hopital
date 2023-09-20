@@ -2,3 +2,78 @@
   <li class="breadcrumb-item"><a [routerLink]="['hospitalisation/liste']"><i class="fa fa-medkit"></i></a></li>
   <li class="breadcrumb-item"><a [routerLink]="['hospitalisation/liste']">liste des hospitalisations</a></li>
 </ul>
+
+
+
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-header">
+        <h5>Liste des hospitalisations</h5>
+      </div>
+      <div class="card-body">
+        <div class="card-body table-border-style">
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+              <tr>
+                <th >Détails</th>
+                <th>Date admission</th>
+                <th>Type admission</th>
+                <th>Motif admission</th>
+                <th>Medecin traitant</th>
+                <th>Accompagnant</th>
+                <th>Date d'entrée</th>
+                <th>Date de sortie</th>
+                <th>Motif sortie</th>
+
+                <!--th>Date déces</th>
+                <th>Motif déces</th-->
+                <th>Actions</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let h of listeHospi">
+                <td>
+                  <a (click)="details(h.idAdmission)" class="btn-sm btn-info text-white">
+                    <i class="fa fa-eye"></i>
+                  </a>
+                </td>
+                <td>{{h.dateAdmission | date:("dd/MM/yyyy")}}</td>
+                <td>{{h.typeAdmission}}</td>
+                <td>{{h.motifAdmission}}</td>
+                <td>{{h.medecinTraitant}}</td>
+                <td>{{h.accompagnant}}</td>
+                <td>{{h.dateEntree | date:("dd/MM/yyyy")}}</td>
+                <td>{{h.dateSortie | date:("dd/MM/yyyy")}}</td>
+                <td>{{h.motifSortie}}</td>
+                <!--td *ngIf="h.dateDeces; ">{{h.dateDeces | date:("dd/MM/yyyy")}}</td>
+                <td *ngIf="h.dateDeces == null ">//</td>
+
+                <td *ngIf="h.motifDeces; ">
+                  {{h.motifDeces}}
+                </td>
+                <td *ngIf="h.motifDeces == null">
+                  //
+                </td-->
+                <td>
+                  <a class="btn-sm btn-warning text-white">
+                    <i class="fa fa-edit"></i>
+                  </a>
+                  <a class="btn-sm btn-danger ml-2 text-white">
+                    <i class="fa fa-trash"></i>
+                  </a>
+                </td>
+              </tr>
+
+
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

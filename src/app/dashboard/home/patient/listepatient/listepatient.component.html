@@ -2,3 +2,50 @@
   <li class="breadcrumb-item"><a [routerLink]="['patient/liste']"><i class="fa fa-user-injured"></i></a></li>
   <li class="breadcrumb-item"><a [routerLink]="['patient/liste']">liste des patients</a></li>
 </ul>
+<div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+  <div class="card">
+    <div class="card-header">
+      <span class="d-block m-t-5">Liste des informations concernant le <code>patient</code> </span>
+    </div>
+    <div class="card-body table-border-style">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+          <tr>
+            <th>N°</th>
+            <th>Prénom & Nom</th>
+            <th>Adresse</th>
+            <th>Téléphone</th>
+            <th>Sexe</th>
+            <th>Situation mat.</th>
+
+            <th>Age</th>
+            <th>Date Naissance</th>
+            <th>Provenance</th>
+            <th>Dossier</th>
+
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let p of listePatient">
+            <td>{{ p.patient.idPatient }}</td>
+            <td>{{p.patient.prenom +" "+ p.nom}}</td>
+            <td>{{p.patient.adresse}}</td>
+            <td>{{p.patient.telephone}}</td>
+            <td>{{p.patient.sexe}}</td>
+            <td>{{p.patient.situationMatrimaniale}}</td>
+            <td>{{p.patient.age}}</td>
+            <td>{{p.patient.dateNaissance | date:("dd/MM/yyyy") }}</td>
+            <td>{{p.patient.provenance?.lieuDeProvenance}}</td>
+            <td>
+              <a (click)="details(p.patient.idPatient)"  class="btn-sm btn-info text-white">
+                <i class="fa fa-eye"></i>
+              </a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

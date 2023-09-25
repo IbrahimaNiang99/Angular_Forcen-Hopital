@@ -79,23 +79,20 @@
 
 <div class="pcoded-main-container">
   <div class="pcoded-content">
-
     <div class="page-header">
       <div class="page-block">
         <div class="row align-items-center">
           <div class="col-md-12">
-            <div class="page-header-title">
-              <h5 class="m-b-10">Hopital</h5>
-            </div>
-            <ul class="breadcrumb">
+             <div class="row">
+               <div class="col-md-12">
+                 <h5 class="m-b-10 float-left">Hopital</h5>
+                 <h5 class="float-right">{{dateDujour +" | "+heureDuJour}} </h5>
+               </div>
+             </div>
               <router-outlet></router-outlet>
-            </ul>
           </div>
         </div>
       </div>
     </div>
-
-
-
   </div>
 </div>

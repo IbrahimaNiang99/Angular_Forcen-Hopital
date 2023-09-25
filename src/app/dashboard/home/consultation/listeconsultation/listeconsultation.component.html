@@ -1,7 +1,24 @@
 <ul class="breadcrumb">
-  <li class="breadcrumb-item"><a [routerLink]="['consultation/liste']"><i class="fa fa-hospital"></i></a></li>
-  <li class="breadcrumb-item"><a [routerLink]="['consultation/liste']">liste consultations</a></li>
+  <li class="breadcrumb-item"><a [routerLink]="['/home/consultation/liste']">liste consultations</a></li>
 </ul>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="row">
+        <div class="col-md-4 col-xl-4">
+          <div class="form-group ml-2 mt-2">
+            <label for="inputAddress">Recherche</label>
+            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+          </div>
+        </div>
+        <div class="col-md-4 col-xl-2 mt-4 offset-6">
+            <button [routerLink]="['/home/consultation/ajout']" class="btn btn-primary">Nouvelle consultation</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="row">
   <div class="col-sm-12">
@@ -15,7 +32,7 @@
                 <table class="table table-striped">
                   <thead>
                   <tr>
-                    <th >#</th>
+                    <th hidden="hidden" >#</th>
                     <th>Details</th>
                     <th>Date de consultation</th>
                     <th>Synthèse</th>
@@ -28,12 +45,10 @@
                   </thead>
                   <tbody>
                     <tr *ngFor="let cons of listeConsultation">
-                      <td >{{ cons.idConsultation }}</td>
+                      <td hidden="">{{ cons.idConsultation }}</td>
                       <td>
-                        <a (click)="detailsConsultation(cons.idConsultation)">
-                          <span class="badge badge-pill badge-info"> Infos
-                            <i class="fa fa-eye"></i>
-                          </span>
+                        <a (click)="detailsConsultation(cons.idConsultation)" class="btn-sm btn-info text-white ml-2">
+                          <i class="fa fa-eye"></i>
                         </a>
                       </td>
                       <td>{{cons.dateConsultation | date:("dd/MM/yyyy") }}</td>

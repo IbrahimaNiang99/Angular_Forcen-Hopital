@@ -1,1 +1,199 @@
-<p>ajoutconsultation works!</p>
+<ul class="breadcrumb">
+  <li class="breadcrumb-item"><a [routerLink]="['/home/consultation/liste']">liste consultations</a></li>
+  <li class="breadcrumb-item"><a [routerLink]="['/home/consultation/ajout']">ajout consultations</a></li>
+</ul>
+
+<form action="">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <h5>Nouvelle consultation</h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+              <div class="col-sm-3">
+                <div class="form-group">
+                  <label class="floating-label" >Date consultation</label>
+                  <input type="date" class="form-control" [(ngModel)]="newConsultation.dateConsultation" name="dateConsultation">
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="form-group">
+                  <label class="floating-label" >Médecin</label>
+                    <select name="idMedecin" [(ngModel)]="newConsultation.medecinId"  class="form-control">
+                      <option *ngFor="let m of medecins" value="{{m.idMedecin}}"> {{m.idMedecin}} {{m.prenom+"_"+m.nom+"_"+m.idMedecin}} </option>
+                    </select>
+                </div>
+
+              </div>
+              <div class="col-sm-3">
+                <div class="form-group">
+                  <label class="floating-label" >Type de consultation</label>
+                    <select name="idTypeConsultation" id="typeconsultation" [(ngModel)]="newConsultation.idTypeConsultation" class="form-control">
+                      <option selected>....</option>
+                      <option *ngFor="let tc of typeConsultations" value="{{tc.idTypeConsultation}}">{{tc.typeConsultation}}</option>
+                    </select>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="form-group">
+                  <label class="floating-label" >Synthèse de la consultation</label>
+                  <textarea type="text" name="synthese" [(ngModel)]="newConsultation.synthese" class="form-control" placeholder=""></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-3">
+                <div class="form-group">
+                  <label class="floating-label" >Date Rendez-vous</label>
+                  <input type="date" class="form-control" [(ngModel)]="newConsultation.rendezVouses.dateRDV" name="dateRDV">
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="form-group">
+                  <label class="floating-label" >Service</label>
+                  <select name="service" [(ngModel)]="newConsultation.rendezVouses.service" class="form-control">
+                    <option selected>Choisir le service... </option>
+                    <option *ngFor="let s of services" value="{{s.nomService}}">{{s.nomService}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="form-group">
+                  <label class="floating-label" >Médecin RDV</label>
+                  <input type="text" class="form-control" [(ngModel)]="newConsultation.rendezVouses.medecin" name="medecin">
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="form-group">
+                  <label class="floating-label" >Note de la préscription</label>
+                  <textarea type="text" class="form-control" [(ngModel)]="newConsultation.prescription.note" name="note"></textarea>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <h5>Patient</h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+              <div class="col-sm-3">
+                <div class="form-group">
+                  <label class="floating-label">Prénom</label>
+                  <input type="text" class="form-control" [(ngModel)]="newConsultation.patient.prenom" name="prenom" placeholder="Prénom du patient">
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="form-group">
+                  <label class="floating-label">Nom</label>
+                  <input type="text" class="form-control" [(ngModel)]="newConsultation.patient.nom" name="nom" aria-describedby="nom" placeholder="Nom du patient">
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="form-group">
+                  <label class="floating-label" >Adresse</label>
+                  <input type="text" class="form-control" [(ngModel)]="newConsultation.patient.adresse" name="adresse" aria-describedby="adresse" placeholder="Adresse du patient">
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="form-group">
+                  <label class="floating-label" >Date de naissance</label>
+                  <input type="date" class="form-control" [(ngModel)]="newConsultation.patient.dateNaissance" name="dateNaissance">
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="form-group">
+                  <label class="floating-label" >Situation matrimoniale</label>
+                  <select name="situationMatrimaniale"  [(ngModel)]="newConsultation.patient.situationMatrimaniale"  class="form-control">
+                    <option  selected>select</option>
+                    <option>Marié(e)</option>
+                    <option>Célibataire</option>
+                    <option>Divorcé(e)</option>
+                    <option>Veuf(ve)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+            <div class="col-sm-3">
+              <div class="form-group">
+                <label class="floating-label">Téléphone</label>
+                <input type="number" class="form-control" [(ngModel)]="newConsultation.patient.telephone" name="telephone" placeholder="Prénom du patient">
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="form-group">
+                <label class="floating-label">Sexe</label>
+                <select name="sexe"  [(ngModel)]="newConsultation.patient.sexe"  class="form-control">
+                  <option  selected>Homme</option>
+                  <option>Femme</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="form-group">
+                <label class="floating-label" >Lieu de provenance</label>
+                <select name="idProvenance"  [(ngModel)]="newConsultation.patient.provenance.idProvenance"  class="form-control">
+                  <option  selected>Choisir....</option>
+                  <option *ngFor="let p of provenances" value="{{p.idProvenance}}">{{p.lieuDeProvenance}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="form-group">
+                <label class="floating-label" >Personne à prévenir</label>
+                <input type="text" class="form-control" [(ngModel)]="newConsultation.patient.nomPersonneAPrevenir" name="nomPersonneAPrevenir" placeholder="Nom de la personne à prévenir">
+              </div>
+            </div>
+          </div>
+            <div class="row">
+            <div class="col-sm-3">
+              <div class="form-group">
+                <label class="floating-label">Tél personne à prevenir</label>
+                <input type="number" class="form-control" [(ngModel)]="newConsultation.patient.telPersonneAPrevenir" name="telPersonneAPrevenir"  placeholder="Nom du patient">
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="form-group">
+                <label class="floating-label" >Prénom père</label>
+                <input type="text" class="form-control" [(ngModel)]="newConsultation.patient.prenomPere" name="prenomPere" aria-describedby="adresse" placeholder="Adresse du patient">
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <div class="form-group">
+                <label class="floating-label" >Nom père</label>
+                <input type="text" class="form-control" [(ngModel)]="newConsultation.patient.nomPere" name="nomPere" aria-describedby="dateNaissance">
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <div class="form-group">
+                <label class="floating-label" >Prénom mère</label>
+                <input type="text" class="form-control" [(ngModel)]="newConsultation.patient.prenomMere" name="prenomMere" aria-describedby="dateNaissance">
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <div class="form-group">
+                <label class="floating-label" >Nom mère</label>
+                <input type="text" class="form-control" [(ngModel)]="newConsultation.patient.nomMere" name="nomMere" aria-describedby="dateNaissance">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="form-group text-center">
+            <button (click)="ajoutConsultation()" class="btn btn-success"> <i class="fa fa-plus-circle"></i> Ajouter</button>
+            <button type="reset" class="btn btn-danger ml-2"> <i class="fa fa-times-circle"></i> Annuler</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+

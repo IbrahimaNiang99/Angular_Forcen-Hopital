@@ -15,5 +15,5 @@ export class Patientdto {
     nomMere:string;
     telPersonneAPrevenir:number;
     nomPersonneAPrevenir:string;
-    provenance: Provenancedto;
+    provenance:Provenancedto = new Provenancedto();
 }

@@ -27,4 +27,5 @@ getDossierPatient(){
     })
   }
 
+  protected readonly caches = caches;
 }

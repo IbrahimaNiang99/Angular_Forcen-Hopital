@@ -1,65 +1,147 @@
-<ul class="breadcrumb">
+<!--ul class="breadcrumb">
   <li class="breadcrumb-item"><a [routerLink]="['medecin/liste']"><i class="fa fa-user-md"></i></a></li>
   <li class="breadcrumb-item"><a [routerLink]="['medecin/liste']">liste des médecins</a></li>
-</ul>
+</ul-->
 
-<div class="row">
-  <div class="col-md-8">
-    <div class="card">
-      <div class="card-header text-center">
-        <h5 *ngIf="dossierpatient.listHospi">{{dossierpatient.listHospi[0]?.patient.prenom +" "
-        +dossierpatient.listHospi[0]?.patient.nom+", née le "
-        +(dossierpatient.listHospi[0]?.patient.dateNaissance ? (dossierpatient.listHospi[0]?.patient.dateNaissance | date:"dd/MM/yyyy"):"N/A" )+", "
-        +dossierpatient.listHospi[0]?.patient.age +" ans" }}</h5>
+<div class="card mt-2">
+  <div class="card-header">
+    <div class="row">
+      <div class="col-md-4 col-xl-4 text-center">
+        <h5 *ngIf="dossierpatient.listCons">{{dossierpatient.listCons[0]?.patient.prenom +" "
+        +dossierpatient.listCons[0]?.patient.nom+", née le "
+        +(dossierpatient.listCons[0]?.patient.dateNaissance ? (dossierpatient.listCons[0]?.patient.dateNaissance | date:"dd/MM/yyyy"):"N/A" )+", "
+        +dossierpatient.listCons[0]?.patient.age +" ans" }}
+        </h5>
+        <p>Adresse : {{dossierpatient.listCons[0]?.patient.adresse }}</p>
+        <p>N° Téléphone : {{dossierpatient.listCons[0]?.patient.telephone+", "+dossierpatient.listCons[0]?.patient.telPersonneAPrevenir }}</p>
       </div>
-      <div class="card-body">
-        <div class="card-body table-border-style">
-          <div class="table-responsive">
-
-          </div>
+      <div class="col-md-4 col-xl-4 text-center">
+        <h5>Correspondants</h5>
+        <div class="mt-2">
+          <span>Médecin traitant : </span> <span class="h5">{{dossierpatient.listHospi[0]?.medecinTraitant}}</span><br>
+           <p>
+             <span *ngIf="dossierpatient.listCons[0]?.medecin">Médecin spécialiste : </span>
+              <span class="h5">{{ dossierpatient.listCons[0]?.medecin.prenom +" "+dossierpatient.listCons[0]?.medecin.nom }} </span>
+           </p>
         </div>
-
+      </div>
+      <div class="col-md-4 col-xl-4 text-right">
+        Nb hospitalisation : {{dossierpatient.listHospi.length}}<br>
+        Nb consultation : {{dossierpatient.listCons.length}}<br>
+        Nb traitements : {{dossierpatient.listHospi[0].traitements.length}}<br>
       </div>
     </div>
   </div>
-  <div class="col-md-4">
-    <div class="card">
-      <div class="card-header">
-        <h5>Correspondants</h5>
-      </div>
-      <div class="card-body">
-        <div class="card-body table-border-style">
-          <div class="table-responsive">
-            <table class="table table-striped">
-              <thead>
-              <tr>
-                <th >#</th>
-                <th>Prenom</th>
-                <th>Nom</th>
-                <th>Email</th>
-                <th>Nationalite</th>
-                <th>Age</th>
-                <th>Date de naissance</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-
-
-
-              </tbody>
-            </table>
-          </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-12 col-xl-12">
+        <div class="card-header">
+          <h5>Consultations & Rendez-vous</h5>
         </div>
+        <div class="card-body">
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th>#</th>
+              <th>Date consultation</th>
+              <th>Type de consultation</th>
+              <th>Synthese</th>
+              <th>Code RDV</th>
+              <th>Date RDV</th>
+              <th>Médecin </th>
+              <th>Service </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let cons of dossierpatient.listCons">
+              <td>{{cons.idConsultation}}</td>
+              <td>{{cons.dateConsultation | date:("dd/MM/yyyy")}}</td>
+              <td>{{cons.typeConsultation.typeConsultation}}</td>
+              <td>{{cons.synthese}}</td>
+              <td>{{cons.rendezVouses.codeRDV}}</td>
+              <td>{{cons.rendezVouses.dateRDV | date:("dd/MM/yyyy") }}</td>
+              <td>{{cons.rendezVouses.medecin}}</td>
+              <td>{{cons.rendezVouses.service}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
 
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-xl-12">
+        <div class="card-header">
+          <h5>Traitements subis</h5>
+        </div>
+        <div class="card-body">
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th>#</th>
+              <th>Type de traitement</th>
+              <th>Date traitement</th>
+              <th>Chirurgien</th>
+              <th>Anestesie</th>
+              <th>Designation</th>
+              <th>Resultat</th>
+              <th>Prix</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let t of dossierpatient.listHospi[0].traitements">
+              <td>{{t.idTraitement}}</td>
+              <td>{{t.typeTraitement}}</td>
+              <td>{{t.dateTraitement | date:("dd/MM/yyyy")}}</td>
+              <td>{{t.chirurgien}}</td>
+              <td>{{t.anestesie}}</td>
+              <td>{{t.designation}}</td>
+              <td>{{t.resultatExamen}}</td>
+              <td>{{t.prix}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-xl-12">
+        <div class="card-header">
+          <h5>Détails hospitalisations</h5>
+        </div>
+        <div class="card-body">
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th>#</th>
+              <th>Type admission</th>
+              <th>Date hospitalisation</th>
+              <th>Motif</th>
+              <th>Résultat</th>
+              <th>Date sortie</th>
+              <th>Date deces</th>
+              <th>Motif deces</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let hospi of dossierpatient.listHospi">
+              <td>{{hospi.idAdmission}}</td>
+              <td>{{hospi.typeAdmission}}</td>
+              <td>{{hospi.dateAdmission | date:("dd/MM/yyyy")}}</td>
+              <td>{{hospi.motifAdmission}}</td>
+              <td>{{hospi.resultatSortie}}</td>
+              <td>{{hospi.dateSortie  | date:("dd/MM/yyyy")}}</td>
+              <td *ngIf="hospi.motifDeces" >{{hospi.dateDeces | date:("dd/MM/yyyy")}}</td>
+              <td *ngIf="!hospi.motifDeces" >###</td>
+              <td *ngIf="hospi.motifDeces">{{hospi.motifDeces}}</td>
+              <td *ngIf="!hospi.motifDeces">###</td>
+
+            </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>

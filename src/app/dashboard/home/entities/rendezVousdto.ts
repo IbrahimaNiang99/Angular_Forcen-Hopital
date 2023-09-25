@@ -5,7 +5,8 @@ import {Patientdto} from "./patientdto";
 export class RendezVousdto {
     codeRDV:number;
     dateRDV:Date;
-    service:Servicedto;
-    medecin:Medecindto;
-    patient:Patientdto;
+    service:string;
+    medecin:string;
+    patient:Patientdto = new Patientdto();
 }
+

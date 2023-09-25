@@ -1,6 +1,7 @@
 import {Chambredto} from "./chambredto";
 import {Facturedto} from "./facturedto";
 import {Patientdto} from "./patientdto";
+import {Traitementdto} from "./traitementdto";
 
 export class Hospitalisationdto {
     idAdmission:number;
@@ -19,5 +20,6 @@ export class Hospitalisationdto {
     patient: Patientdto;
     facture: Facturedto;
     chambre: Chambredto;
+    traitements: Traitementdto[];
 
 }

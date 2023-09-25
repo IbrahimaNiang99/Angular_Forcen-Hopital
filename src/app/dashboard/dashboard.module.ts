@@ -20,6 +20,8 @@ import { ListerendezvousComponent } from './home/rendezvous/listerendezvous/list
 import { DetailsconsultationComponent } from './home/consultation/detailsconsultation/detailsconsultation.component';
 import { DetailshospitalisationComponent } from './home/hospitalisation/detailshospitalisation/detailshospitalisation.component';
 import { DossierComponent } from './home/patient/dossier/dossier.component';
+import {FormsModule} from "@angular/forms";
+
 
 const routes: Routes = [
   { path: "home", component: HomeComponent,
@@ -27,6 +29,7 @@ const routes: Routes = [
       {path: "", component: AccueilComponent},
       {path: "accueil", component: AccueilComponent},
       {path: "consultation/liste", component: ListeconsultationComponent},
+      {path: "consultation/ajout", component: AjoutconsultationComponent},
       {path: "consultation/details/:id", component: DetailsconsultationComponent},
       {path: "hospitalisation/liste", component: ListehospitalisationComponent},
       {path: "hospitalisation/details/:id", component: DetailshospitalisationComponent},
@@ -62,7 +65,8 @@ const routes: Routes = [
   ],
   imports: [
     CommonModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    FormsModule
   ]
 })
 export class DashboardModule { }
